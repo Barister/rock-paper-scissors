@@ -2,19 +2,32 @@
 
 //ПРописать правила игры и переменные.
  //   КОнстанты: игрок, компьютер; камень, ножницы, бумага, и кто кого бьет
-    let player;
-    let computer;
 
 // Перменные: выбор игрока, выбор компьютера
     let playerChoice;
     let computerChoice;
+
+    let paper = "paper";
+    let rock = "rock";
+    let scissors = "scissors";
+
+    let elements = [paper, rock, scissors];
  
 //Получить от игрока выбор предмета, которым он будет играть. Предложить варианты, проверить что выбор соответствует вариантам
-//ПОлучить от компьютера выбор предмета, которым он будет играть. Сгенерировть случайный выбор из трех предметов.
-    computerChoice = function getComputerChoice() {
-        let choice;
-        return choice;
+    function getPlayerChoice() {
+        playerChoice = scissors;
+        
     }
+//ПОлучить от компьютера выбор предмета, которым он будет играть. Сгенерировть случайный выбор из трех предметов.
+    function getComputerChoice() {
+        computerChoice = elements[Math.floor(Math.random() * 3)];
+    }
+
+    getPlayerChoice();
+    console.log("playerChoice: ", playerChoice);
+
+    getComputerChoice();    
+    console.log("computerChoice: ", computerChoice);
 
 // Сравнить предметы игрока и компьютера. Объявить победителя либо объявить ничью.
     function playSingleRound(playerChoice, computerChoice) {
@@ -26,8 +39,10 @@
             result = "Congratulations! You win!!!"
         }
         else {
-            result = "Oh, no! Compurer win!!!"
+            result = "Oh, no! Computer win!!!"
         }
         console.log(result);
     }
+
+    playSingleRound(playerChoice, computerChoice);
     
