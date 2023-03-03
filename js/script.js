@@ -65,4 +65,4 @@ function game(times){
 
 //execution of func to play a game 5 times
 
-game(5);
+// game(5);
