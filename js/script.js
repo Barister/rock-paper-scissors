@@ -2,13 +2,37 @@
 let playerChoice;
 let computerChoice;
 
-let paper = "Paper";
-let rock = "Rock";
-let scissors = "Scissors";
+let paper = "paper";
+let rock = "rock";
+let scissors = "scissors";
 
 let elements = [paper, rock, scissors];
  
-//to make function for get PlayerChoice and validate choise
+// to getPlayerChoice and start playSingleRound
+
+getPlayerChoice = document.querySelectorAll('button');
+
+getPlayerChoice.forEach(element => element.addEventListener('click', function() { 
+    if (playerChoice != 'blocked') {
+        
+        playerChoice = element.id;
+    
+        // to add image of playerChoice
+        let playerChoiceImage = document.querySelector('div.player > img');
+        
+        playerChoiceImage.setAttribute('src', `/img/${playerChoice}.jpg`);
+        playerChoiceImage.setAttribute('alt', `${playerChoice}`);
+        
+        playSingleRound();
+
+    }
+    
+}));
+
+
+//old feat - to make function for get PlayerChoice and validate choise
+
+/*
 
 function getPlayerChoice() {
     playerChoice = window.prompt("Please choose your weapon! Paper, rock or scissors?");
@@ -21,39 +45,88 @@ function getPlayerChoice() {
     return playerChoice;
 }
 
-//to to make function for get computerChoice randomly
+*/
+
+//to make function for get computerChoice randomly
 
 function getComputerChoice() {
     computerChoice = elements[Math.floor(Math.random() * 3)];
+
+    //to add image of computerChoice
+    let computerChoiceImage = document.querySelector('div.computer > img');
+    
+    computerChoiceImage.setAttribute('src', `/img/${computerChoice}.jpg`);
+    computerChoiceImage.setAttribute('alt', `${computerChoice}`);
+    
+
 }
 
+// to determine selectors
+
+let compare = document.querySelector('.vs p');
+let playerResult = document.querySelector('.player__result');
+let computerResult = document.querySelector('.computer__result');
+let title = document.querySelector('.title h1');
+
+
+// to determine actions after result of round
+
+function draw() {
+    compare.innerText = 'Draw';
+    
+}
+
+function playerWin() {
+    compare.innerHTML = `<p>You win</p><p>round</p>`;
+    playerResult.innerText = playerResult.innerText / 1 + 1;
+    if (playerResult.innerText == 5) {
+        title.innerHTML = `<p>Congratulations!</p><p>You won the game!</p>`;
+        playerChoice = 'blocked';
+        
+    }
+}
+
+function computerWin() {
+    compare.innerHTML = `<p>You lose</p><p>round</p>`;
+    computerResult.innerText = computerResult.innerText / 1 + 1;
+    if (computerResult.innerText == 5) {
+        title.innerHTML = `<p>Game over!</p><p>Computer won the game!</p>`;
+        playerChoice = 'blocked';
+        
+    }
+}
+    
 
 //to make a function to play one game: 
 
 function playSingleRound() {
-    let result;
-    //execution to get rivals choices; 
-    getPlayerChoice();
-    console.log("playerChoice: ", playerChoice);
-
+    
     getComputerChoice();    
-    console.log("computerChoice: ", computerChoice);
-    //  to compare competitor choices
+    
     if (playerChoice == computerChoice) {
-        result = "Draw!!!";
+        
+        draw();
     }
     else if ((playerChoice == paper && computerChoice == rock) || (playerChoice == rock && computerChoice == scissors) || (playerChoice == scissors && computerChoice == paper)) {
-        result = `Congratulations!  ${playerChoice} beats ${computerChoice}. You win!!!`;
+        
+        playerWin();
     }
     else {
-        result = `Oh, no! ${computerChoice} beats ${playerChoice}. Computer win!!! `;
+        
+        computerWin();
     }
-    console.log(result);
-    return result;
+    
+    if (playerResult.innerText < 5 && computerResult.innerText < 5 ) {
+        title.innerHTML = `<p>Another round</p><p>Chose your weapon!</p>`;
+    }
+    
+    
+    
 }
 
-//to make a func to play 5 times;
+//old func - to make a func to play 5 times;
 
+/*
 function game(times){
     for (let i = 0; i < times; i++) {
         playSingleRound();
@@ -62,6 +135,7 @@ function game(times){
     
     
 }
+*/
 
 //execution of func to play a game 5 times
 
