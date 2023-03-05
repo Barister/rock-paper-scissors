@@ -16,6 +16,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
 }
 
 
@@ -26,7 +27,9 @@ header {
 }
 
 main {
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex: 1 0 auto;
     align-items: center;
 }
@@ -39,7 +42,7 @@ main img {
 .battle {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 20px;
     justify-content: center;
 }
 
@@ -50,8 +53,8 @@ main img {
 
 .player, .computer {
     border: 1px solid #fff;
-    height: 200px;
-    width: 200px;
+    max-height: 200px;
+    max-width: 200px;
     border-radius: 5px;
 }
 
@@ -91,7 +94,7 @@ main img {
 .buttons {
     justify-content: center;
     display: flex;
-    gap: 50px;
+    gap: 20px;
 }
 
 .buttons button {
