@@ -20,7 +20,7 @@ getPlayerChoice.forEach(element => element.addEventListener('click', function() 
         // to add image of playerChoice
         let playerChoiceImage = document.querySelector('div.player > img');
         
-        playerChoiceImage.setAttribute('src', `/img/${playerChoice}.jpg`);
+        playerChoiceImage.setAttribute('src', `img/${playerChoice}.jpg`);
         playerChoiceImage.setAttribute('alt', `${playerChoice}`);
         
         playSingleRound();
@@ -55,7 +55,7 @@ function getComputerChoice() {
     //to add image of computerChoice
     let computerChoiceImage = document.querySelector('div.computer > img');
     
-    computerChoiceImage.setAttribute('src', `/img/${computerChoice}.jpg`);
+    computerChoiceImage.setAttribute('src', `img/${computerChoice}.jpg`);
     computerChoiceImage.setAttribute('alt', `${computerChoice}`);
     
 
